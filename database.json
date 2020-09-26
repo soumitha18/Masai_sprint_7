@@ -1,0 +1,15 @@
+{
+    "students": [
+        {
+            "id": "0",
+            "name": "soumitha",
+            "class": 9,
+            "sub1": 80,
+            "sub2": 80,
+            "sub3": 50,
+            "total": 210,
+            "avg": 70,
+            "grade" : "B"
+        }
+    ]
+}

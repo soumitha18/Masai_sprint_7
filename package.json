@@ -1,0 +1,28 @@
+{
+  "name": "masai_sprint_7",
+  "version": "1.0.0",
+  "description": "student marks recorder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "json-server --watch database.json --port 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soumitha18/Masai_sprint_7.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soumitha18/Masai_sprint_7/issues"
+  },
+  "homepage": "https://github.com/soumitha18/Masai_sprint_7#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "json-server": "^0.16.1",
+    "react-redux": "^7.2.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5"
+  }
+}
