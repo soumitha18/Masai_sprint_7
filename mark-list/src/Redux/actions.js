@@ -1,39 +1,56 @@
-import {FETCH_STUDENT_FAILURE, FETCH_STUDENT_REQUEST, FETCH_STUDENT_SUCCESS, ADDING_STUDENT_FAILURE,ADDING_STUDENT_REQUEST,ADDING_STUDENT_SUCCESS,DELETING_STUDENT_FAILURE,DELETING_STUDENT_REQUEST, DELETING_STUDENT_SUCCESS} from "./actionTypes"
+import { ADDING_STUDENT_FAILURE, ADDING_STUDENT_REQUEST, ADDING_STUDENT_SUCCESS, DELETING_STUDENT_FAILURE, DELETING_STUDENT_REQUEST, DELETING_STUDENT_SUCCESS } from "./actionTypes"
 import axios from "axios"
 
-const fetchStudentRequest = () => {
+const deleteStudentRequest = (id) => {
     return {
-        type : FETCH_STUDENT_REQUEST
+        type: DELETING_STUDENT_REQUEST,
+        id: id
     }
 }
 
-const fetchStudentFailure = error =>{
+const deleteStudentFailure = () => {
     return {
-        type : FETCH_STUDENT_FAILURE,
-        error : error
+        type: DELETING_STUDENT_FAILURE,
+        error: true
     }
 }
 
-const fetchStudentSuccess = data => {
+const deleteStudentSuccess = () => {
     return {
-        type : FETCH_STUDENT_SUCCESS,
-        data : data
+        type: DELETING_STUDENT_SUCCESS,
+        delete: true
     }
 }
 
-const fetchingStudents = () => {
+const deleteStudent = (id) => {
     return dispatch => {
-        dispatch(fetchStudentRequest())
+        deleteStudentRequest(id)
         return axios
-            .get(`http://localhost:8080/students`)
+            .delete(`http://localhost:8080/students/${id}`)
+            .then(res => deleteStudentSuccess())
+            .then(err => deleteStudentFailure())
+    }
+}
+
+const addingStudentRequest = (query) => {
+    console.log(query)
+}
+
+const addingStudent = (query = {}) => {
+    return dispatch => {
+        addingStudentRequest(query)
+        return axios
+            .post(`http://localhost:8080/students`, query)
             .then(res => console.log(res))
-            .catch(err => dispatch(fetchStudentRequest(err)))
+            .then(err => console.log(err))
     }
 }
 
 export {
-    fetchingStudents,
-    fetchStudentFailure,
-    fetchStudentRequest,
-    fetchStudentSuccess
+    deleteStudent,
+    deleteStudentFailure,
+    deleteStudentRequest,
+    deleteStudentSuccess,
+    addingStudent,
+    addingStudentRequest
 }
