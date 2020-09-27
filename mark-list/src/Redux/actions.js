@@ -1,4 +1,4 @@
-import { ADDING_STUDENT_FAILURE, ADDING_STUDENT_REQUEST, ADDING_STUDENT_SUCCESS, DELETING_STUDENT_FAILURE, DELETING_STUDENT_REQUEST, DELETING_STUDENT_SUCCESS } from "./actionTypes"
+import { EDIT_STUDENT_FAILURE, EDIT_STUDENT_REQUEST, EDIT_STUDENT_SUCCESS, ADDING_STUDENT_FAILURE, ADDING_STUDENT_REQUEST, ADDING_STUDENT_SUCCESS, DELETING_STUDENT_FAILURE, DELETING_STUDENT_REQUEST, DELETING_STUDENT_SUCCESS } from "./actionTypes"
 import axios from "axios"
 
 const deleteStudentRequest = (id) => {
@@ -28,12 +28,29 @@ const deleteStudent = (id) => {
         return axios
             .delete(`http://localhost:8080/students/${id}`)
             .then(res => deleteStudentSuccess())
-            .then(err => deleteStudentFailure())
+            .catch(err => deleteStudentFailure())
     }
 }
 
 const addingStudentRequest = (query) => {
-    console.log(query)
+    return {
+        type: ADDING_STUDENT_REQUEST,
+        query: query
+    }
+}
+
+const addingStudentFailure = () => {
+    return {
+        type: ADDING_STUDENT_FAILURE,
+        error: true
+    }
+}
+
+const addingStudentSuccess = () => {
+    return {
+        type: ADDING_STUDENT_SUCCESS,
+        add: true
+    }
 }
 
 const addingStudent = (query = {}) => {
@@ -41,8 +58,40 @@ const addingStudent = (query = {}) => {
         addingStudentRequest(query)
         return axios
             .post(`http://localhost:8080/students`, query)
-            .then(res => console.log(res))
-            .then(err => console.log(err))
+            .then(res => addingStudentSuccess())
+            .catch(err => addingStudentFailure())
+    }
+}
+
+const editingStudentRequest = (query, id) => {
+    return {
+        type: EDIT_STUDENT_REQUEST,
+        query: query,
+        id: id
+    }
+}
+
+const editingStudentFailure = () => {
+    return {
+        type: EDIT_STUDENT_FAILURE,
+        error: true
+    }
+}
+
+const editingStudentSuccess = () => {
+    return {
+        type: EDIT_STUDENT_SUCCESS,
+        edit: true
+    }
+}
+
+const editStudent = (query = {}, id = 0) => {
+    return dispatch => {
+        editingStudentRequest(query, id)
+        return axios
+            .patch(`http://localhost:8080/students/${id}`, query)
+            .then(res => editingStudentSuccess())
+            .catch(err => editingStudentFailure())
     }
 }
 
@@ -52,5 +101,11 @@ export {
     deleteStudentRequest,
     deleteStudentSuccess,
     addingStudent,
-    addingStudentRequest
+    addingStudentRequest,
+    addingStudentSuccess,
+    addingStudentFailure,
+    editStudent,
+    editingStudentRequest,
+    editingStudentSuccess,
+    editingStudentFailure
 }

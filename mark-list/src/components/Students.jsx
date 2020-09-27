@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
-import { addingStudent, deleteStudent } from "../Redux/actions"
+import { deleteStudent } from "../Redux/actions"
 import axios from "axios"
+import { useHistory } from "react-router"
+import { Link } from "react-router-dom"
 
 function Student() {
     const [data, setData] = useState([])
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const fetching = () => {
         axios.get(`http://localhost:8080/students`)
@@ -23,35 +26,15 @@ function Student() {
     }
 
     const handleEdit = (id) => {
-        console.log(id)
+        history.push(`/student/${id}`)
     }
-
-    const handleAdd = () => {
-        let obj = {
-            "id": "7",
-            "name": "sou",
-            "class": 9,
-            "sub1": 80,
-            "sub2": 80,
-            "sub3": 50,
-            "total": 210,
-            "avg": 70,
-            "grade": "B"
-        }
-
-        dispatch(addingStudent(obj))
-
-    }
-
-    console.log(data)
 
     return (
         <div>
-            <button onClick={handleAdd}>add</button>
             {
                 data && data.map(item => (
                     <div key={item.id}>
-                        {item.name} <button onClick={() => handleEdit(item.id)}>Edit</button> <button onClick={() => handleDelete(item.id)} >Delete</button>
+                        <Link to={`/student/${item.id}`}>{item.name}</Link><button onClick={() => handleEdit(item.id)}>Edit</button> <button onClick={() => handleDelete(item.id)} >Delete</button>
                     </div>
                 ))
             }
