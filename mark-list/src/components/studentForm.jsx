@@ -34,7 +34,7 @@ function StudentForm() {
     }
 
     return (
-        <div>
+        <div className="mt-5">
             <input type="text" placeholder="Enter the Name" value={name} onChange={e => setName(e.target.value)} />
             <input type="text" placeholder="Enter the Class" value={cls} onChange={e => setCls(e.target.value)} />
             <input type="number" placeholder="Enter the Subject1 Marks" value={sub1} onChange={e => setSub1(e.target.value)} />

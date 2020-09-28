@@ -59,7 +59,6 @@ function Student() {
 
     return (
         <div>
-            <button onClick={goingBack}>BACK</button>
             {
                 data && !edit
                     ?
@@ -72,7 +71,8 @@ function Student() {
                         <p>Total : <b>{data.total}</b></p>
                         <p>Average : <b>{data.avg}</b></p>
                         <p>Grade : <b>{data.grade}</b></p>
-                        <button onClick={() => setEdit(true)}>Edit</button>
+                        <button onClick={() => setEdit(true)}>EDIT</button>
+                        <button onClick={goingBack}>BACK</button>
                     </div>
                     :
                     <div>
@@ -82,7 +82,7 @@ function Student() {
                         <input type="number" placeholder="Enter the Subject1" value={sub1} onChange={e => setSub1(e.target.value)} />
                         <input type="number" placeholder="Enter the Subject2" value={sub2} onChange={e => setSub2(e.target.value)} />
                         <input type="number" placeholder="Enter the Subject3" value={sub3} onChange={e => setSub3(e.target.value)} />
-                        <button onClick={handleUpdate}>Update</button>
+                        <button className="btn btn-success" onClick={handleUpdate}>Update</button>
                         <button onClick={() => setEdit(false)}>Cancel</button>
                     </div>
             }
