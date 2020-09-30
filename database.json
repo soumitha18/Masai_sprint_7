@@ -1,15 +1,37 @@
 {
-    "students": [
-        {
-            "id": "0",
-            "name": "soumitha",
-            "class": 9,
-            "sub1": 80,
-            "sub2": 80,
-            "sub3": 50,
-            "total": 210,
-            "avg": 70,
-            "grade" : "B"
-        }
-    ]
+  "students": [
+    {
+      "id": "87",
+      "name": "sou",
+      "class": "10",
+      "sub1": 90,
+      "sub2": 90,
+      "sub3": 90,
+      "total": 270,
+      "avg": 90,
+      "grade": "A"
+    },
+    {
+      "id": "45ca8bdc-d56b-4933-a06c-7167b89cec70",
+      "name": "Soumitha",
+      "class": "10",
+      "sub1": 33,
+      "sub2": 87,
+      "sub3": 40,
+      "total": 160,
+      "avg": 53,
+      "grade": "A"
+    },
+    {
+      "id": "696a9e0b-a9b4-43b1-bfb5-b51eac0625fc",
+      "name": "Soumit",
+      "class": "10",
+      "sub1": 90,
+      "sub2": 90,
+      "sub3": 90,
+      "total": 270,
+      "avg": 90,
+      "grade": "A"
+    }
+  ]
 }

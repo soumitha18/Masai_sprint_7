@@ -47,7 +47,7 @@ function Student() {
             <div className="container mt-5 text-center">
                 <div className="row">
                     <div className="col-6">
-                        <h1 className="text-center pt-3 text-secondary">Reports</h1>
+                        <h1 className="text-center pt-3 text-secondary">Report Cards</h1>
                     </div>
                     <div className="col-6 pt-4">
                         <select onChange={e => handleChange(e.target.value)}>
