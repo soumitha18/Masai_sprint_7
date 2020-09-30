@@ -47,7 +47,7 @@ function Student() {
             <div className="container mt-5 text-center">
                 <div className="row">
                     <div className="col-6">
-                        <h1 className="text-center pt-3" style={{ color: " #16a085 " }}>Reports</h1>
+                        <h1 className="text-center pt-3 text-secondary">Reports</h1>
                     </div>
                     <div className="col-6 pt-4">
                         <select onChange={e => handleChange(e.target.value)}>
@@ -59,21 +59,18 @@ function Student() {
                 </div>
             </div>
             <div className="container">
-
-
                 <div className="row">
                     {
                         data && data.map(item => (
                             <div key={item.id} className="col-4 p-3">
-                                <div className="card">
+                                <div className="card shadow text-center">
                                     <div className="card-body">
                                         <h3 className="card-title">{item.name}</h3>
                                         <div className="card-text">
-                                            <p>subject1 : <b>{item.sub1}</b></p>
-                                            <p>subject2 : <b>{item.sub2}</b></p>
-                                            <p>subject3 : <b>{item.sub3}</b></p>
+                                            <p>Total : <b>{item.total}</b></p>
+                                            <p>Avg & grd : <b> {item.avg} & {item.grade}</b></p>
                                         </div>
-                                        <button className="btn btn-success mx-3" onClick={() => handleEdit(item.id)}>View</button>
+                                        <button className="btn btn-primary mx-3" onClick={() => handleEdit(item.id)}>View</button>
                                         <button className="btn btn-danger mx-3" onClick={() => handleDelete(item.id)} >Delete</button>
                                     </div>
                                 </div>

@@ -57,33 +57,89 @@ function Student() {
         fetching(id)
     }
 
+    const PrintReport = () => {
+        alert("The report card is successfully printed!")
+        goingBack()
+    }
+
     return (
         <div>
             {
                 data && !edit
                     ?
-                    <div>
-                        <h1>Name : {data.name}</h1>
-                        <h3>Class : {data.class}</h3>
-                        <p>Subject1 : <b>{data.sub1}</b></p>
-                        <p>Subject2 : <b>{data.sub2}</b></p>
-                        <p>Subject3 : <b>{data.sub3}</b></p>
-                        <p>Total : <b>{data.total}</b></p>
-                        <p>Average : <b>{data.avg}</b></p>
-                        <p>Grade : <b>{data.grade}</b></p>
-                        <button onClick={() => setEdit(true)}>EDIT</button>
-                        <button onClick={goingBack}>BACK</button>
+                    <div className="container my-5 pt-5">
+                        <div class="card shadow">
+                            <div class="card-header text-center">
+                                <div>
+                                    <h1>{data.name}'s Report Card</h1>
+                                </div>
+                            </div>
+                            <div class="card-body px-5">
+                                <div className="offset-1">
+                                    <p>Grade : <b className="h3">{data.grade}</b></p>
+                                    <table class="table table-striped text-center my-5" style={{ width: "85%" }}>
+                                        <tbody className="font-weight-bold">
+                                            <tr>
+                                                <td>Subject 1</td>
+                                                <td>{data.sub1}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Subject 2</td>
+                                                <td>{data.sub2}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Subject 3</td>
+                                                <td>{data.sub3}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td>{data.total}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Average</td>
+                                                <td>{data.avg}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div className="text-center">
+                                    <button className="btn btn-primary mx-4" onClick={() => setEdit(true)}>EDIT</button>
+                                    <button className="btn btn-success mx-4" onClick={() => PrintReport()}>Print</button>
+                                    <button className="btn btn-danger mx-4" onClick={goingBack}>BACK</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     :
-                    <div>
-                        <h5>Edit</h5>
-                        <input type="text" placeholder="Enter the Name " value={name} onChange={e => setName(e.target.value)} />
-                        <input type="text" placeholder="Enter the Class" value={cls} onChange={e => setCls(e.target.value)} />
-                        <input type="number" placeholder="Enter the Subject1" value={sub1} onChange={e => setSub1(e.target.value)} />
-                        <input type="number" placeholder="Enter the Subject2" value={sub2} onChange={e => setSub2(e.target.value)} />
-                        <input type="number" placeholder="Enter the Subject3" value={sub3} onChange={e => setSub3(e.target.value)} />
-                        <button className="btn btn-success" onClick={handleUpdate}>Update</button>
-                        <button onClick={() => setEdit(false)}>Cancel</button>
+                    <div className="container my-5 pt-5">
+                        <div className="row">
+                            <div className="col-6 offset-3">
+                                <div className="card shadow">
+                                    <div class="card-header text-center">
+                                        <div>
+                                            <h3>Edit Here</h3>
+                                        </div>
+                                    </div>
+                                    <div className="card-body">
+                                        <small className="font-weight-bolder">Name</small>
+                                        <input className="w-100 my-2" type="text" placeholder="Enter the Name " value={name} onChange={e => setName(e.target.value)} /><br />
+                                        <small className="font-weight-bolder">Class</small>
+                                        <input className="w-100 my-2" type="text" placeholder="Enter the Class" value={cls} onChange={e => setCls(e.target.value)} /><br />
+                                        <small className="font-weight-bolder">Subject1</small>
+                                        <input className="w-100 my-2" type="number" placeholder="Enter the Subject1" value={sub1} onChange={e => setSub1(e.target.value)} /><br />
+                                        <small className="font-weight-bolder">Subject2</small>
+                                        <input className="w-100 my-2" type="number" placeholder="Enter the Subject2" value={sub2} onChange={e => setSub2(e.target.value)} /><br />
+                                        <small className="font-weight-bolder">Subject3</small>
+                                        <input className="w-100 my-2" type="number" placeholder="Enter the Subject3" value={sub3} onChange={e => setSub3(e.target.value)} />
+                                        <div className="text-center">
+                                            <button className="btn btn-success mx-4" onClick={handleUpdate}>Update</button>
+                                            <button className="btn btn-danger mx-4" onClick={() => setEdit(false)}>Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
             }
         </div>
