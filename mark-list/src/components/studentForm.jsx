@@ -34,13 +34,32 @@ function StudentForm() {
     }
 
     return (
-        <div className="mt-5">
-            <input type="text" placeholder="Enter the Name" value={name} onChange={e => setName(e.target.value)} />
-            <input type="text" placeholder="Enter the Class" value={cls} onChange={e => setCls(e.target.value)} />
-            <input type="number" placeholder="Enter the Subject1 Marks" value={sub1} onChange={e => setSub1(e.target.value)} />
-            <input type="number" placeholder="Enter the Subject2 Marks" value={sub2} onChange={e => setSub2(e.target.value)} />
-            <input type="number" placeholder="Enter the Subject3 Marks" value={sub3} onChange={e => setSub3(e.target.value)} />
-            <button onClick={handleAdd}>ADD</button>
+        <div className="container my-5 pt-5">
+            <div className="row">
+                <div className="col-8 offset-2">
+                    <div className="card">
+                        <div className="card-header text-center font-weight-bolder">
+                            ADD STUDENT FORM
+                        </div>
+                        <div className="card-body">
+                            <small><b>Name:</b></small>
+                            <input className="w-100 my-2" type="text" placeholder="Enter the Name" value={name} onChange={e => setName(e.target.value)} /><br />
+                            <small><b>Class:</b></small>
+                            <input className="w-100 my-2" type="text" placeholder="Enter the Class" value={cls} onChange={e => setCls(e.target.value)} />
+                            <h5 className="mt-3">Enter Subjects Marks</h5>
+                            <small><b>Subject1 :</b></small>
+                            <input className="w-100 my-2" type="number" placeholder="Enter the Subject1 Marks" value={sub1} onChange={e => setSub1(e.target.value)} /><br />
+                            <small><b>Subject2 :</b></small>
+                            <input className="w-100 my-2" type="number" placeholder="Enter the Subject2 Marks" value={sub2} onChange={e => setSub2(e.target.value)} /><br />
+                            <small><b>Subject3 :</b></small>
+                            <input className="w-100 my-2" type="number" placeholder="Enter the Subject3 Marks" value={sub3} onChange={e => setSub3(e.target.value)} />
+                            <div className="text-center">
+                                <button className="btn btn-success" onClick={handleAdd}>ADD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
